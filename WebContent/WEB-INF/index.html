@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.navbar-custom {
+	background-color: #b1695a;
+	color: #ffffff;
+	border-radius: 0;
+}
+
+.navbar-custom .navbar-nav>li>a {
+	color: #fff;
+}
+
+.navbar-custom .navbar-nav>.active>a {
+	color: #ffffff;
+	background-color: transparent;
+}
+
+.navbar-custom .navbar-nav>li>a:hover, .navbar-custom .navbar-nav>li>a:focus,
+	.navbar-custom .navbar-nav>.active>a:hover, .navbar-custom .navbar-nav>.active>a:focus,
+	.navbar-custom .navbar-nav>.open>a {
+	text-decoration: none;
+	background-color: #9f5e50;
+}
+
+.navbar-custom .navbar-brand {
+	color: #eeeeee;
+}
+
+.navbar-custom .navbar-toggle {
+	background-color: #eeeeee;
+}
+
+.navbar-custom .icon-bar {
+	background-color: #33aa33;
+}
+</style>
+</head>
+<body ng-app="app">
+	<header>
+
+		<nav class="navbar navbar-custom">
+
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">LIFE HACKS</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a href="#home"><i
+								class="fa fa-home"></i>Home</a></li>
+						<li class="nav-item"><a href="" class="nav-link"><i
+								class="fa fa-shield"></i> About Us</a></li>
+						<li><a href="" ng-show="currentUser.username">Welcome
+								{{currentUser.username}}</a>
+								
+
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Job Details<span class="caret"></span></a>
+<ul class="dropdown-menu"><li><a href="#addJob">View Job</a></li>
+<li><a href="#addJob">Post New Job</a></li></ul></li>
+<li><a href="" ng-show="currentUser.username">Get All Jobs</a></li>
+<li><a href="#getAllJobs" ng-show="currentUser.role=='Admin'">Post new job</a></li>
+
+<li><a href="#blogform" ng-show="currentUser.username">Add Blog Post </a></li>
+
+								
+						<li><a href=""><i class="icomoon icon-blog"></i>Blog</a></li>
+						<li><a href=""><i class="fa fa-comments-o"></i>Forum</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#register" ng-hide="currentUser.username"><span
+								class="glyphicon glyphicon-user"></span>Register</a></li>
+						<li><a href="#login" ng-hide="currentUser.username"><span
+								class="glyphicon glyphicon-log-in"></span>Sign in</a></li>
+								<li><a href="#profilepic">Upload Profile Pic</a></li>
+					<li><a href="">Welcome {{currentUser.username}}</a>
+					<li ng-show="currentUser.username"><a href="#profilepic"><span
+							class="profile-img"> <img
+								src="http://localhost:9090/project2_backend/getimage/{{currentUser.username}}"
+								width="30px" height="30px" class="img-rounded"></span></a></li>
+
+					
+								<li><a href="#logout" ng-click="logout()" ng-show="currentUser.username">logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+	<div ng-view></div>
+
+</body>
+
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+<!-- Angular JS ngRoute -->
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+
+<script type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+
+<!-- BootStrap -->
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
+<script type="text/javascript"
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+
+
+<script type="text/javascript" src="js/app.js"></script>
+
+<script type="text/javascript" src="_user/usercontroller.js"></script>
+<script type="text/javascript" src="_user/userservice.js"></script>
+<script type="text/javascript" src="_job/jobcontroller.js"></script>
+<script type="text/javascript" src="_job/jobservice.js"></script>
+<script type="text/javascript" src="_blog/blogcontroller.js"></script>
+<script type="text/javascript" src="_blog/blogdetailcontroller.js"></script>
+<script type="text/javascript" src="_blog/blogservice.js"></script>
+
+</html>
