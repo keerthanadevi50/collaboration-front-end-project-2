@@ -1,10 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<style>
+.grid {
+  border-spacing: $gutter 0;
+  display: table;
+  margin-left: - $gutter;
+  margin-bottom: $gutter * 2;
+  width: calc(100% + 20px); // $gutter * 2
+}
+
+.grid__item {
+  background: #F7F7F7;
+  border: 1px solid #EEE;
+  display: table-cell;
+  margin-bottom: $gutter;  
+  padding: 30px 20px;  
+}
+
+@media (max-width: 640px) {
+  .grid__item {
+    display: block;
+    width: auto !important;
+  }
+}
+
+.width-25 {
+  width: 25%;
+}
+body {
+  background: #C5EAFD;
+  margin: 0 auto;
+  padding: 60px 40px;
+  max-width: 1200px;
+}
+
+h2 {
+  color: #69C296;
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 14px;
+  
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+p {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+</style>
 </head>
-<body>
-gv
+<body ng-init="blogPosts()">
+
+<div class="grid">
+  <div class="grid__item width-25">
+  
+    <h2>First Col</h2>
+    <p>Pickled shabby chic Helvetica Marfa. Polaroid seitan direct trade, Helvetica mlkshk plaid quinoa. Vice irony fashion axe viral gluten-free mlkshk next level.</p>
+    
+    <div class="row" ng-repeat="blogPost in blogPosts">
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<div>{{blogPost.title}}</div>
+<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
+ <span><strong>on: </strong>{{blogPost.createdOn | date:'medium'}}</span>
+ <a href="#getBlogDetail/{{blogPost.id}}" class="button">Read More</a>
+          
+          </div>
+          <div class="panel-body">
+          {{blogPost.body}}
+          
+          </div>
+
+</div>
+</div>
+  </div>
+
 </body>
 </html>

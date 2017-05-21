@@ -1,7 +1,7 @@
 var app=angular.module("app",['ngRoute','ngCookies'])
 
 app.config(config)
-
+app.run(run);
 config.$inject = ['$routeProvider'];
 
 function config($routeProvider){
@@ -30,14 +30,54 @@ function config($routeProvider){
 controller:'BlogController',
 templateUrl:'_blog/blogform.html'
 })
+.when('/getAllBlogs',{
+controller:'BlogController',
+templateUrl:'_blog/blogList.html'
+})
 .when('/getBlogDetail/:id',{
 controller:'BlogDetailController',
 templateUrl:'_blog/getBlogDetail.html'
 })
+.when('/getBlogForApproval/:id',{
+    	templateUrl:'_blog/getBlogForApproval.html',
+    	controller:'BlogDetailController'
+    })
+    /*.when('/getAllUsers',{
+    	templateUrl:'_friend/userslist.html',
+    	controller:'FriendController'
+    })
+    .when('/pendingRequests',{
+    	templateUrl:'_friend/pendingRequests.html',
+    	controller:'FriendController'
+    })*/
+
+.when('/profilepicture',{
+		templateUrl:'_user/profilepicture.html'
+	})
+	.when('/edituser',{
+    	templateUrl:'_user/edituserform.html',
+    	controller:'EditController'
+    })
+    .when('/getAllUsers',{
+    	templateUrl:'_friend/userslist.html',
+    	controller:'FriendController'
+    })
+     .when('/pendingRequests',{
+    	templateUrl:'_friend/pendingrequest.html',
+    	controller:'FriendController'
+    })
+     .when('/getBlogForApproval/:id',{
+    	templateUrl:'_friend/getBlogForApproval.html',
+    	controller:'BlogDetailController'
+    })
+    .when('/listoffriends',{
+    	templateUrl:'_friend/friendlist.html',
+    	controller:'FriendController'
+    })
 }
 
-
-app.run(function($rootScope,$cookieStore,UserService,$location){
+run.$inject = ['$rootScope', '$cookieStore', 'UserService', '$location'];
+function run($rootScope,$cookieStore,UserService,$location){
 	console.log('entering run method ')
 	console.log($rootScope.currentUser)
 	if($rootScope.currentUser==undefined){
@@ -58,4 +98,4 @@ app.run(function($rootScope,$cookieStore,UserService,$location){
 			console.log(response.status);
 		})
 	}
-})
+}

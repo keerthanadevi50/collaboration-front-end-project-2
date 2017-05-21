@@ -59,21 +59,38 @@
 								class="fa fa-home"></i>Home</a></li>
 						<li class="nav-item"><a href="" class="nav-link"><i
 								class="fa fa-shield"></i> About Us</a></li>
-						<li><a href="" ng-show="currentUser.username">Welcome
-								{{currentUser.username}}</a>
-								
+						
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Job Details<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#addJob">View Job</a></li>
+								<li><a href="#addJob">Post New Job</a></li>
+							</ul></li>
+						<li><a href="" ng-show="currentUser.username">Get All
+								Jobs</a></li>
+						<li><a href="#getAllJobs" ng-show="currentUser.role=='Admin'">Post
+								new job</a></li>
 
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Job Details<span class="caret"></span></a>
-<ul class="dropdown-menu"><li><a href="#addJob">View Job</a></li>
-<li><a href="#addJob">Post New Job</a></li></ul></li>
-<li><a href="" ng-show="currentUser.username">Get All Jobs</a></li>
-<li><a href="#getAllJobs" ng-show="currentUser.role=='Admin'">Post new job</a></li>
+						<li><a href="#blogform" ng-show="currentUser.username">Add
+								Blog Post </a></li>
+						<li class="dropdown"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown"
+							ng-show="currentUser.username">Blog<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#getAllBlogs">view all blogs</a></li>
+									<li><a href="#addPost">Post Blog</a></li>
+								</ul></li>
 
-<li><a href="#blogform" ng-show="currentUser.username">Add Blog Post </a></li>
+						<li class="dropdown"><a href="" class="dropdown-toggle"
+							data-toggle="dropdown" ng-show="currentUser.username"> Friend
+								<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="#/getAllUsers">view all users</a></li>
+								<li><a href="#/pendingRequests">Pending Requests</a></li>
+							</ul></li>
 
-								
-						<li><a href=""><i class="icomoon icon-blog"></i>Blog</a></li>
+
 						<li><a href=""><i class="fa fa-comments-o"></i>Forum</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -81,15 +98,18 @@
 								class="glyphicon glyphicon-user"></span>Register</a></li>
 						<li><a href="#login" ng-hide="currentUser.username"><span
 								class="glyphicon glyphicon-log-in"></span>Sign in</a></li>
-								<li><a href="#profilepic">Upload Profile Pic</a></li>
-					<li><a href="">Welcome {{currentUser.username}}</a>
-					<li ng-show="currentUser.username"><a href="#profilepic"><span
-							class="profile-img"> <img
-								src="http://localhost:9090/project2_backend/getimage/{{currentUser.username}}"
-								width="30px" height="30px" class="img-rounded"></span></a></li>
+						<li><a href="#profilepicture">Upload Profile Pic</a></li>
+						<li><a href="#edituser" ng-show="currentUser.username"><span
+								class="glyphicon glyphicon-user"></span>Edit Profile</a></li>
+						<li><a href="">Welcome {{currentUser.username}}</a>
+						<li ng-show="currentUser.username"><a href="#profilepic"><span
+								class="profile-img"> <img
+									src="http://localhost:8070/project2-backend(restfulcrud)/getimage/{{currentUser.username}}"
+									width="30px" height="30px" class="img-rounded"></span></a></li>
 
-					
-								<li><a href="#logout" ng-click="logout()" ng-show="currentUser.username">logout</a></li>
+
+						<li><a href="#logout" ng-click="logout()"
+							ng-show="currentUser.username">logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -102,31 +122,38 @@
 </body>
 
 <script type="text/javascript"
-src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
 <!-- Angular JS ngRoute -->
 <script type="text/javascript"
-src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 
 <script type="text/javascript"
-    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
 
 <!-- BootStrap -->
 <script type="text/javascript"
-src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
 <script type="text/javascript"
-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
 
 
 <script type="text/javascript" src="js/app.js"></script>
 
 <script type="text/javascript" src="_user/usercontroller.js"></script>
 <script type="text/javascript" src="_user/userservice.js"></script>
+<script type="text/javascript" src="_user/editcontroller.js"></script>
 <script type="text/javascript" src="_job/jobcontroller.js"></script>
 <script type="text/javascript" src="_job/jobservice.js"></script>
 <script type="text/javascript" src="_blog/blogcontroller.js"></script>
 <script type="text/javascript" src="_blog/blogdetailcontroller.js"></script>
 <script type="text/javascript" src="_blog/blogservice.js"></script>
+<script type="text/javascript" src="_friend/friendcontroller.js"></script>
+<script type="text/javascript" src="_friend/friendservice.js"></script>
 
 </html>
