@@ -2,98 +2,214 @@
 <html>
 <head>
 <style>
-.grid {
-  border-spacing: $gutter 0;
-  display: table;
-  margin-left: - $gutter;
-  margin-bottom: $gutter * 2;
-  width: calc(100% + 20px); // $gutter * 2
+h1 {
+  color: white;
+  padding-left: 10px;
 }
 
-.grid__item {
-  background: #F7F7F7;
-  border: 1px solid #EEE;
-  display: table-cell;
-  margin-bottom: $gutter;  
-  padding: 30px 20px;  
+#hover {
+  color: rgba(188, 175, 204, 0.9);
 }
 
-@media (max-width: 640px) {
-  .grid__item {
-    display: block;
-    width: auto !important;
-  }
+h2#testimonials {
+  color: #fffae3;
 }
 
-.width-25 {
-  width: 25%;
-}
-body {
-  background: #C5EAFD;
-  margin: 0 auto;
-  padding: 60px 40px;
-  max-width: 1200px;
+div#all {
+  width: 100%;
+  height: 100%;
 }
 
-h2 {
-  color: #69C296;
-  font-family: sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  margin-bottom: 14px;
-  
-  &:first-child {
-    margin-top: 0;
-  }
+
+/* generic css */
+
+.view {
+  margin: 10px;
+  float: left;
+  border: 10px solid #fff;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  box-shadow: 1px 1px 2px #e6e6e6;
+  cursor: default;
+  background: #fff url(../images/bgimg.jpg) no-repeat center center
 }
 
-p {
-  font-family: sans-serif;
-  font-size: 16px;
-  line-height: 1.4;
+.view .mask,
+.view .content {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0
 }
 
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+.view img {
+  display: block;
+  position: relative
 }
+
+.view h2 {
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  font-family: Raleway, serif;
+  padding: 10px;
+  /*background: rgba(0, 0, 0, 0.8);*/
+  margin: 20px 0 0 0
+}
+
+.view p {
+  font-family: Merriweather, serif;
+  font-style: italic;
+  font-size: 14px;
+  position: relative;
+  color: #fff;
+  padding: 0px 20px 0px;
+  text-align: center
+}
+
+.view a.info {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px;
+  background: #000;
+  color: #fff;
+  font-family: Raleway, serif;
+  text-transform: uppercase;
+  box-shadow: 0 0 1px #000
+}
+
+.view a.info:hover {
+  box-shadow: 0 0 5px #000
+}
+
+
+/*1*/
+
+.view-first img {
+  /*1*/
+  transition: all 0.2s linear;
+  width: 300px;
+  height: 200px;
+}
+
+.view-first .mask {
+  opacity: 0;
+  background-color: rgba(58, 1, 132, 0.44);
+  transition: all 0.4s ease-in-out;
+}
+
+.view-first h2 {
+  transform: translateY(-100px);
+  opacity: 0;
+  font-family: Raleway, serif;
+  transition: all 0.2s ease-in-out;
+}
+
+.view-first p {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+.view-first a.info {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+
+/* */
+
+.view-first:hover img {
+  transform: scale(1.1);
+}
+
+.view-first:hover .mask {
+  opacity: 1;
+}
+
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.view-first:hover p {
+  transition-delay: 0.1s;
+}
+
+.view-first:hover a.info {
+  transition-delay: 0.2s;
+}
+
 
 </style>
 </head>
-<body ng-init="blogPosts()">
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,700|Merriweather' rel='stylesheet' type='text/css'>
 
-<div class="grid">
-  <div class="grid__item width-25">
+<h1 style="font-family: 'Raleway', sans-serif;"> CSS3 hover<span id="hover"> effects/</span></h1>
+<p style="font-family: sans-serif; color: #fff; padding-left: 10px;">An implementation of Alessio Atzeni's CSS3 effects. Please give credit to <a href="www.jacobstone.co.uk" style="color:#efefef; text-decoration: none;">www.jacobstone.co.uk</a> if you use my photography.</p>
+<div id="all">
+  <div class="view view-first" ng-repeat="blogPost in blogPosts">
+    <img src="http://static1.squarespace.com/static/55ac6d80e4b0a964784b2f80/t/5703e9208259b507928ad72a/1459874081584/xzKx01n.png" width="250" height="250" />
+    <div class="mask">
+      <h2>Empire State</h2>
+      <p>A cool description of some sort between these tags. I am so cool and awesomely awesome.</p>
+      <a href="#getBlogDetail/{{blogPost.id}}" class="button">Read More</a>
+    </div>
+    <div>
+          {{blogPost.body}}
+          
+          </div>
+  </div>
+  </div>
   
-    <h2>First Col</h2>
-    <p>Pickled shabby chic Helvetica Marfa. Polaroid seitan direct trade, Helvetica mlkshk plaid quinoa. Vice irony fashion axe viral gluten-free mlkshk next level.</p>
-    
-    <div class="row" ng-repeat="blogPost in blogPosts">
+<!-- <body ng-init="blogPosts()">
+<div class="view view-second" ng-repeat="blogPost in blogPosts">
+		<img src="images/blog.jpg" width="250" height="250"/>
+		<div class="mask"></div>
+		<div class="content">
+			<div >     
+				<h2>
+					<span ng-bind="{{blogPost.title}}"></span>
+				</h2>
+				<p>
+					<span ng-bind="{{blogPost.createdBy.username}}"></span>
+				</p> 
+				<p>
+					<span ng-bind="{{blogPost.createdOn | date:'medium'}}"></span>
+				</p>
+				
+<p>
+					<span ng-bind="blogPost.timeStamp"></span>
+				</p>
+				<a href="#getBlogDetail/{{blogPost.id}}" class="button">Read More</a>
+			</div>
+			<div>
+          {{blogPost.body}}
+          
+          </div>
+		</div> -->
+	
 
+<!--     <div class="row" ng-repeat="blogPost in blogPosts">
 <div class="panel panel-default">
 <div class="panel-heading">
 <div>{{blogPost.title}}</div>
 <span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
  <span><strong>on: </strong>{{blogPost.createdOn | date:'medium'}}</span>
  <a href="#getBlogDetail/{{blogPost.id}}" class="button">Read More</a>
-          
+    -->      
           </div>
-          <div class="panel-body">
-          {{blogPost.body}}
           
-          </div>
 
 </div>
-</div>
-  </div>
-
+</div> 
+  
 </body>
 </html>

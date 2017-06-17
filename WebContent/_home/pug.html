@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+:root {
+  --c-01: #f5def0;
+  --c-02: #7a4386;
+  --c-03: #cd7cbd;
+  --c-04: #eaf3ee;
+  --c-05: #407e60;
+  --c-06: #96c4ae;
+  --c-07: #f8ecda;
+  --c-08: #b0803a;
+  --c-09: #e7bd7f;
+}
+
+body {
+  -webkit-animation: color_bg 12s ease-in 100;
+          animation: color_bg 12s ease-in 100;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  background-color: var(--c-01);
+  overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.magic-garden {
+  width: auto;
+  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10vh auto;
+  overflow: hidden;
+}
+
+.shroom {
+  -webkit-animation: color_cap 12s ease-in 100;
+          animation: color_cap 12s ease-in 100;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  background-color: var(--c-03);
+  position: relative;
+}
+.shrooms {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.shroom--sm:after, .shroom--lg:after {
+  -webkit-animation: color_stem_dots 12s ease-in 100;
+          animation: color_stem_dots 12s ease-in 100;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  background-color: var(--c-02);
+  content: '';
+  position: absolute;
+  left: 0;
+}
+.shroom--sm {
+  width: 40px;
+  height: 22px;
+  border-top-left-radius: 27px;
+  border-top-right-radius: 27px;
+  margin-top: 160%;
+  margin-bottom: 170%;
+}
+.shroom--sm:after {
+  width: 18px;
+  height: 13px;
+  margin-left: calc(50% - (18px / 2));
+  border-radius: 1px;
+  bottom: -22px;
+}
+.shroom--sm ul {
+  width: 100%;
+  height: 22px;
+  position: absolute;
+  top: -26px;
+}
+.shroom--lg {
+  width: 80px;
+  height: 44px;
+  border-top-left-radius: 54px;
+  border-top-right-radius: 54px;
+  margin-top: 43%;
+  margin-bottom: 70%;
+}
+.shroom--lg:after {
+  width: 36px;
+  height: 26px;
+  margin-left: calc(50% - (36px / 2));
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  bottom: -26px;
+}
+.shroom--lg ul {
+  width: 100%;
+  height: 44px;
+}
+.shroom__dot {
+  background-color: var(--c-02);
+  border-radius: 50%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  outline: 1px solid transparent;
+}
+.shroom__dot:nth-child(1) {
+  -webkit-animation: float 0.6s 0.2s ease-in-out alternate infinite;
+          animation: float 0.6s 0.2s ease-in-out alternate infinite;
+  -webkit-transform: translate3d(16%, 14%, 0) rotate(0.001deg);
+          transform: translate3d(16%, 14%, 0) rotate(0.001deg);
+  top: 56%;
+  left: 9%;
+}
+.shroom__dot:nth-child(2) {
+  -webkit-animation: float 0.6s 0.4s ease-in-out alternate infinite;
+          animation: float 0.6s 0.4s ease-in-out alternate infinite;
+  -webkit-transform: translate3d(17%, 13%, 0) rotate(0.001deg);
+          transform: translate3d(17%, 13%, 0) rotate(0.001deg);
+  top: 14%;
+  left: 33%;
+}
+.shroom__dot:nth-child(3) {
+  -webkit-animation: float 0.6s 0.6s ease-in-out alternate infinite;
+          animation: float 0.6s 0.6s ease-in-out alternate infinite;
+  -webkit-transform: translate3d(18%, 12%, 0) rotate(0.001deg);
+          transform: translate3d(18%, 12%, 0) rotate(0.001deg);
+  top: 50%;
+  right: 9%;
+}
+.shroom__dot:nth-child(4) {
+  -webkit-animation: float 0.6s 0.8s ease-in-out alternate infinite;
+          animation: float 0.6s 0.8s ease-in-out alternate infinite;
+  -webkit-transform: translate3d(19%, 11%, 0) rotate(0.001deg);
+          transform: translate3d(19%, 11%, 0) rotate(0.001deg);
+  top: 60%;
+  left: 34%;
+}
+.shroom__dot:nth-child(5) {
+  -webkit-animation: float 0.6s 1s ease-in-out alternate infinite;
+          animation: float 0.6s 1s ease-in-out alternate infinite;
+  -webkit-transform: translate3d(20%, 10%, 0) rotate(0.001deg);
+          transform: translate3d(20%, 10%, 0) rotate(0.001deg);
+  top: 25%;
+  right: 28%;
+}
+.shroom__dot:nth-child(6) {
+  -webkit-animation: float 0.6s 1.2s ease-in-out alternate infinite;
+          animation: float 0.6s 1.2s ease-in-out alternate infinite;
+  -webkit-transform: translate3d(21%, 9%, 0) rotate(0.001deg);
+          transform: translate3d(21%, 9%, 0) rotate(0.001deg);
+  top: 62%;
+  right: 32%;
+}
+.shroom__dot--sm:nth-child(1) {
+  width: 7px;
+  height: 7px;
+}
+.shroom__dot--sm:nth-child(2) {
+  width: 7px;
+  height: 7px;
+}
+.shroom__dot--sm:nth-child(3) {
+  width: 7px;
+  height: 7px;
+}
+.shroom__dot--sm:nth-child(4) {
+  width: 4px;
+  height: 4px;
+}
+.shroom__dot--sm:nth-child(5) {
+  width: 4px;
+  height: 4px;
+}
+.shroom__dot--sm:nth-child(6) {
+  width: 5px;
+  height: 5px;
+}
+.shroom__dot--lg:nth-child(1) {
+  width: 14px;
+  height: 14px;
+}
+.shroom__dot--lg:nth-child(2) {
+  width: 14px;
+  height: 14px;
+}
+.shroom__dot--lg:nth-child(3) {
+  width: 14px;
+  height: 14px;
+}
+.shroom__dot--lg:nth-child(4) {
+  width: 9px;
+  height: 9px;
+}
+.shroom__dot--lg:nth-child(5) {
+  width: 9px;
+  height: 9px;
+}
+.shroom__dot--lg:nth-child(6) {
+  width: 11px;
+  height: 11px;
+}
+
+@-webkit-keyframes float {
+  100% {
+    -webkit-transform: translate3d(0, 0, 0) rotate(0.001deg);
+            transform: translate3d(0, 0, 0) rotate(0.001deg);
+  }
+}
+
+@keyframes float {
+  100% {
+    -webkit-transform: translate3d(0, 0, 0) rotate(0.001deg);
+            transform: translate3d(0, 0, 0) rotate(0.001deg);
+  }
+}
+@-webkit-keyframes color_bg {
+  0%,
+  30% {
+    background-color: var(--c-01);
+  }
+  33%,
+  63% {
+    background-color: var(--c-04);
+  }
+  66%,
+  98% {
+    background-color: var(--c-07);
+  }
+}
+@keyframes color_bg {
+  0%,
+  30% {
+    background-color: var(--c-01);
+  }
+  33%,
+  63% {
+    background-color: var(--c-04);
+  }
+  66%,
+  98% {
+    background-color: var(--c-07);
+  }
+}
+@-webkit-keyframes color_cap {
+  0%,
+  30% {
+    background-color: var(--c-03);
+  }
+  33%,
+  63% {
+    background-color: var(--c-06);
+  }
+  66%,
+  98% {
+    background-color: var(--c-09);
+  }
+}
+@keyframes color_cap {
+  0%,
+  30% {
+    background-color: var(--c-03);
+  }
+  33%,
+  63% {
+    background-color: var(--c-06);
+  }
+  66%,
+  98% {
+    background-color: var(--c-09);
+  }
+}
+@-webkit-keyframes color_stem_dots {
+  0%,
+  30% {
+    background-color: var(--c-02);
+  }
+  33%,
+  63% {
+    background-color: var(--c-05);
+  }
+  66%,
+  98% {
+    background-color: var(--c-08);
+  }
+}
+@keyframes color_stem_dots {
+  0%,
+  30% {
+    background-color: var(--c-02);
+  }
+  33%,
+  63% {
+    background-color: var(--c-05);
+  }
+  66%,
+  98% {
+    background-color: var(--c-08);
+  }
+  div {
+color:#2f2515;
+float:left;
+margin-left:30px;
+width:520px;
+font-family:Copse, verdana, sans-serif;
+}
+
+p {
+margin:5px 0 0;
+padding:0;
+}
+
+ul {
+list-style-type:none;
+padding:0;
+}
+}
+</style>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="magic-garden">
+  <ul class="shrooms">
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="shrooms">
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="shrooms">
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="shrooms">
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="shrooms">
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="shrooms">
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+  </ul>
+<!--   <ul class="shrooms">
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+  </ul> -->
+<!--   <ul class="shrooms">
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="shrooms">
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+        <li class="shroom__dot shroom__dot--sm">   </li>
+      </ul>
+    </li>
+  </ul> -->
+  <!-- <ul class="shrooms">
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li> -->
+   <!--  <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--lg">
+      <ul>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+        <li class="shroom__dot shroom__dot--lg"></li>
+      </ul>
+    </li>
+  </ul> -->
+  <!--<ul class="shrooms">
+     <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li> -->
+    <!-- <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li> -->
+   <!--   <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li>
+    <li class="shroom shroom--sm">
+      <ul>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+        <li class="shroom__dot shroom__dot--sm"></li>
+      </ul>
+    </li> 
+  </ul>--> 
+
+
+
+				</div>
+</body>
+</html>

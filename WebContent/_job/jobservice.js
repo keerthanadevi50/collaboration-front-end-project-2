@@ -1,10 +1,10 @@
 app.factory('JobService',function($http){
 	var jobService={}
 	
-	var BASE_URL="http://localhost:8070/project2-backend(restfulcrud)/"
+	var BASE_URL="http://localhost:8070/project2_backend/"
 	
 	jobService.saveJob=function(job){
-		return $http.post(BASE_URL + "/saveJob",job)
+		return $http.post(BASE_URL + "saveJob",job)
 	}
 	
 	jobService.getAllJobs=function(){

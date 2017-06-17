@@ -2,6 +2,7 @@ app
 		.controller(
 				"BlogController",
 				function($scope, $location, BlogService) {
+
 					$scope.saveBlogPost = function() {
 						BlogService
 								.saveBlogPost($scope.blog)
@@ -15,7 +16,10 @@ app
 										})
 					}
 
-					$scope.blogPosts = BlogService.getBlogPosts() // this will be called																	// automatically
+					$scope.blogPosts = BlogService.getBlogPosts() // this will
+																	// be called
+																	// //
+																	// automatically
 					.then(function(response) {
 						console.log(response.status)
 						console.log(response.data)
@@ -24,10 +28,43 @@ app
 						console.log(response.status)
 						console.log(response.data)
 					})
-					$scope.postsForApproval=BlogService.getAllBlogsForApproval()
-	.then(function(response){
-		$scope.postsForApproval=response.data;
-	},function(response){
-		console.log(response.status)
-	})
+					$scope.postsForApproval = BlogService
+							.getAllBlogsForApproval().then(function(response) {
+								console.log(response.status)
+								console.log(response.data)
+								$scope.postsForApproval = response.data;
+							}, function(response) {
+								console.log(response.status)
+								console.log(response.data)
+							})
+							$scope.postsForNotApproval = BlogService
+							.getAllBlogsForApproval().then(function(response) {
+								console.log(response.status)
+								console.log(response.data)
+								$scope.postsForNotApproval = response.data;
+							}, function(response) {
+								console.log(response.status)
+								console.log(response.data)
+							})
+				$scope.approvedPost = BlogService.getApprovedPost().then(function(response){
+				console.log(response.status)
+				console.log(response.data)
+				$scope.approvedPost = response.data;
+				}, function(response) {
+					console.log(response.status)
+					console.log(response.data)
+			
 				})
+				
+				$scope.notApprovedPost = BlogService.getNotApprovedPost().then(function(response){
+				console.log(response.status)
+				console.log(response.data)
+				$scope.notApprovedPost = response.data;
+				}, function(response) {
+					console.log(response.status)
+					console.log(response.data)
+			
+				})
+				
+				})
+				

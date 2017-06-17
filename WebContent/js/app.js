@@ -15,8 +15,14 @@ function config($routeProvider){
 		templateUrl:'_user/login.html',
 		controller:'UserController'
 	})
+	.when('/',{
+		templateUrl:'_home/home.html'
+	})
 	.when('/home',{
 		templateUrl:'_home/home.html'
+	})
+	.when('/OurStory',{
+		templateUrl:'_home/pug.html'
 	})
 	.when('/addJob',{
     	templateUrl:'_job/jobform.html',
@@ -38,10 +44,10 @@ templateUrl:'_blog/blogList.html'
 controller:'BlogDetailController',
 templateUrl:'_blog/getBlogDetail.html'
 })
-.when('/getBlogForApproval/:id',{
+/*.when('/getBlogForApproval/:id',{
     	templateUrl:'_blog/getBlogForApproval.html',
     	controller:'BlogDetailController'
-    })
+    })*/
     /*.when('/getAllUsers',{
     	templateUrl:'_friend/userslist.html',
     	controller:'FriendController'
@@ -66,10 +72,7 @@ templateUrl:'_blog/getBlogDetail.html'
     	templateUrl:'_friend/pendingrequest.html',
     	controller:'FriendController'
     })
-     .when('/getBlogForApproval/:id',{
-    	templateUrl:'_friend/getBlogForApproval.html',
-    	controller:'BlogDetailController'
-    })
+     
     .when('/listoffriends',{
     	templateUrl:'_friend/friendlist.html',
     	controller:'FriendController'

@@ -1,6 +1,6 @@
 app.factory('FriendService',function($http){
 	var friendService={}
-	var BASE_URL="http://localhost:9090/project2_backend"
+	var BASE_URL="http://localhost:8070/project2_backend/"
 		
 		
 	friendService.getAllUsers=function(){

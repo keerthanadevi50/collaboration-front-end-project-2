@@ -31,7 +31,7 @@ body {
       padding-top: 20px;
       padding-bottom: 20px;
   }
-  .navbar {
+   .navbar {
       padding-top: 5px;
       padding-bottom: 5px;
       border: 0;
@@ -42,10 +42,61 @@ body {
   }
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
-  }
+  } 
+  /* .navbar-custom {
+	background-color: #b1695a;
+	color: #ffffff;
+	border-radius: 0;
+}
+
+.navbar-custom .navbar-nav>li>a {
+	color: #fff;
+}
+
+.navbar-custom .navbar-nav>.active>a {
+	color: #ffffff;
+	background-color: transparent;
+}
+
+.navbar-custom .navbar-nav>li>a:hover, .navbar-custom .navbar-nav>li>a:focus,
+	.navbar-custom .navbar-nav>.active>a:hover, .navbar-custom .navbar-nav>.active>a:focus,
+	.navbar-custom .navbar-nav>.open>a {
+	text-decoration: none;
+	background-color: #9f5e50;
+}
+
+.navbar-custom .navbar-brand {
+	color: #eeeeee;
+}
+
+.navbar-custom .navbar-toggle {
+	background-color: #eeeeee;
+}
+
+.navbar-custom .icon-bar {
+	background-color: #33aa33;
+}
+   */
   </style>
 </head>
 <body>
+    <!-- <div class="row" ng-repeat="blogPost in blogPosts">
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<div>{{blogPost.title}}</div>
+<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
+ <span><strong>on: </strong>{{blogPost.createdOn | date:'medium'}}</span>
+ <a href="#getBlogDetail/{{blogPost.id}}" class="button">Read More</a>
+          
+          </div>
+          <div class="panel-body">
+          {{blogPost.body}}
+          
+          </div>
+
+</div>
+</div> -->
 <div class="container-fluid bg-1 text-center">
   <h3 class="margin">Who Am I?</h3>
   <img src="https://sheroes.in/img/uploads/article/high_res/how%20to%20be%20more%20productive%20SHEROES.jpg" class="img-responsive img-rectangle margin" style="display:inline" alt="Bird" width="1250" height="1250">
@@ -82,7 +133,7 @@ body {
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+  copyright@ 
 </footer>
 </body>
 </html>

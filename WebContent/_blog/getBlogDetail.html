@@ -4,20 +4,28 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-<div>
+<body ng-init="blogPosts()">
+
+
+    <div class="row" >
+
 <div class="panel panel-default">
 <div class="panel-heading">
 <div>{{blogPost.title}}</div>
 <span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
- <span><strong>on: </strong>{{blogPost.createdOn | date:'medium'}}</span> 
+ <span><strong>on: </strong>{{blogPost.createdOn | date:'medium'}}</span>
+ <a href="#getBlogDetail/{{blogPost.id}}" class="button">Read More</a>
+          
           </div>
           <div class="panel-body">
           {{blogPost.body}}
           
           </div>
+
 </div>
 </div>
+  </div>
+  </div>
 <div class="row" >
 <a href="" ng-click="getBlogComments(blogPost.id)" class="btn btn-default">Show Comments</a>
 <ul ng-show="showcomments">
@@ -34,5 +42,8 @@
 <form >
 <textarea ng-model="blogComment.body"></textarea>
 <button ng-click="addBlogComment()" class="btn btn-primary btn-block">Post Comment</button>
+</form>
+
+</div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 app.factory('UserService',function($http){
 	var userService={}
-	var BASE_URL="http://localhost:8070/project2-backend(restfulcrud)/"
+	var BASE_URL="http://localhost:8070/project2_backend/"
 	
 	userService.registerUser=function(user){
 		return $http.post(BASE_URL+"/register",user);
